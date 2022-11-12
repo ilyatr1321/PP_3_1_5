@@ -44,14 +44,14 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PatchMapping(value="/edit/{id}")
+    @PostMapping(value="/edit/{id}")
     public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
 
         userService.updateUser(user, id);
         return "redirect:/admin";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public String getUserId(@PathVariable(value="id") Long id) {
         userService.deleteById(id);
         return "redirect:/admin";
@@ -63,12 +63,12 @@ public class AdminController {
         Set<Roles> roles = roleService.getAllRoles();
         model.addAttribute("listRoles", roleService.getAllRoles());
         model.addAttribute("user", userService.getUserById(id));
-        return "edit";
+        return "redirect:/admin";
     }
 
     @GetMapping("/new")
     public String newForm(@ModelAttribute("user") User user){
-        return "new";
+        return "redirect:/admin";
     }
 
 

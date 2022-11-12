@@ -1,6 +1,8 @@
 package ru.kata.spring.boot_security.demo.model;
 
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -15,7 +17,6 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
     @Column(name = "username")
@@ -27,11 +28,8 @@ public class User implements Serializable {
     @Column(name = "email")
     private String email;
 
-    public User(String username, String password, String email, Collection<? extends GrantedAuthority> grantedAuthorities) {
-    }
 
-    public User(Long id, String username, String password, String email, Collection<Roles> roles) {
-        this.id = id;
+    public User(String username, String password, String email, Collection<Roles> roles) {
         this.username = username;
         this.password = password;
         this.email = email;
