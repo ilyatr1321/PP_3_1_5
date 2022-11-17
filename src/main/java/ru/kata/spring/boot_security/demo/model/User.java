@@ -28,6 +28,13 @@ public class User implements Serializable {
     @Column(name = "email")
     private String email;
 
+    @ManyToMany
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Roles> roles;
+
+
 
     public User(String username, String password, String email, Collection<Roles> roles) {
         this.username = username;
@@ -80,12 +87,6 @@ public class User implements Serializable {
     public void setRoles(Collection<Roles> roles) {
         this.roles = roles;
     }
-
-    @ManyToMany
-    @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Collection<Roles> roles;
 
 
 }
