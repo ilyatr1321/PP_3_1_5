@@ -1,8 +1,6 @@
 package ru.kata.spring.boot_security.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +16,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServices implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
 
     private UserRepository userRepository;

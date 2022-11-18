@@ -2,9 +2,6 @@ package ru.kata.spring.boot_security.demo.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.Roles;
 import ru.kata.spring.boot_security.demo.model.User;
@@ -15,13 +12,13 @@ import java.util.List;
 import java.util.Set;
 
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping("/api")
-public class RestController {
+@RequestMapping("/admin")
+public class AdminRestController {
     private final UserService userService;
     private final RoleService roleService;
 
 
-    public RestController(UserService userService, RoleService roleService) {
+    public AdminRestController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
